@@ -87,6 +87,26 @@ func PrintMatrix[T any](mtx [][]T) {
 	}
 }
 
+func DisplayPathAscii(n, m int, path []Coordinate) {
+	grid := make([][]rune, n)
+	for i := range grid {
+		grid[i] = make([]rune, m)
+		for j := range grid[i] {
+			grid[i][j] = '.' // Default empty space
+		}
+	}
+
+	// Mark the path
+	for _, coord := range path {
+		grid[coord.Row][coord.Col] = '*'
+	}
+
+	// Print the grid
+	for _, row := range grid {
+		fmt.Println(string(row))
+	}
+}
+
 func AddBools(theBools ...bool) int {
 	sum := 0
 	for _, thing := range theBools {

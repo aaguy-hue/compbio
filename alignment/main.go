@@ -68,8 +68,29 @@ func main() {
 	// maxScore, align1, align2 := AffineAlignment(1, 3, 2, 1, "GA", "GTTA")
 	// maxScore, align1, align2 := AffineAlignment(1, 5, 5, 1, "GAT", "AT")
 	// maxScore, align1, align2 := AffineAlignment(1, 2, 3, 2, "CAGGT", "TAC")
-	maxScore, align1, align2 := AffineAlignment(2, 3, 3, 2, "GTTCCAGGTA", "CAGTAGTCGT")
-	fmt.Println(maxScore)
-	fmt.Println(align1)
-	fmt.Println(align2)
+	// maxScore, align1, align2 := AffineAlignment(2, 3, 3, 2, "GTTCCAGGTA", "CAGTAGTCGT")
+	// fmt.Println(maxScore)
+	// fmt.Println(align1)
+	// fmt.Println(align2)
+
+	n, m := 10, 8
+	edges := []Edge{
+		{Coordinate{1, 1}, Coordinate{1, 2}, 1},
+		{Coordinate{1, 3}, Coordinate{1, 4}, 1},
+		{Coordinate{2, 3}, Coordinate{2, 4}, 1},
+		{Coordinate{2, 2}, Coordinate{3, 2}, 1},
+		{Coordinate{3, 5}, Coordinate{3, 6}, 1},
+		{Coordinate{4, 2}, Coordinate{5, 2}, 1},
+		{Coordinate{4, 3}, Coordinate{4, 4}, 1},
+		{Coordinate{4, 5}, Coordinate{4, 6}, 1},
+		{Coordinate{5, 2}, Coordinate{5, 3}, 1},
+		{Coordinate{6, 0}, Coordinate{6, 1}, 1},
+		{Coordinate{8, 0}, Coordinate{8, 1}, 2},
+		{Coordinate{9, 2}, Coordinate{9, 3}, 1},
+		{Coordinate{9, 4}, Coordinate{9, 5}, 1},
+		{Coordinate{9, 6}, Coordinate{9, 7}, 1},
+	}
+	path := ManhattanTourist(n, m, edges)
+
+	DisplayPathAscii(n, m, path)
 }
